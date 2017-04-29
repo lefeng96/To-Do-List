@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+		<script src="controllers/controller.js"></script>
+	</head>
+	<body>
+		<div class="container" ng-controller="AppCtrl">
+			<h1>To Do List</h1>
+			<input ng-model="test">
+			{{test}}
+			<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Text</th>
+					<th>Due</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr>
+				<td><input class="form-control" ng-model="todo.name"></td>
+				<td><input class="form-control" ng-model="todo.text"></td>
+				<td><input class="form-control" ng-model="todo.due"></td>
+				<td><input class="form-control" ng-model="todo.status"></td>
+				<td><button class="btn btn-primary" ng-click="addtodo()">Add to do list</button></td>
+				<td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;</td>
+				<td><button class="btn btn-info" ng-click="deselect()">Clear</button></td> 
+			</tr> 
+			<tr ng-repeat="todo in todolist">
+				<td>{{todo.name}}</td>
+				<td>{{todo.text}}</td>
+				<td>{{todo.due}}</td>
+				<td>{{todo.status}}</td>
+				<td><button class="btn btn-danger" ng-click="remove(todo._id)">Remove</button></td>
+				<td><button class="btn btn-warning" ng-click="edit(todo._id)">Edit</button></td>
+				&nbsp;&nbsp;
+				<td><button class="btn btn-warning" ng-click="done(todo._id)">Done</button></td>
+			</tr>
+		</tbody>
+			</table>
+		</div>
+	</body>
+
+</html>
